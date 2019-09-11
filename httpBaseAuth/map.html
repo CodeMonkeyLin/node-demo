@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>CanvasLayer</title>
+    <script type="text/javascript"
+        src="http://api.map.baidu.com/api?v=2.0&ak=kCUnbBKcPkIRCrqaG8GoPoTBC0hFB0v1"></script>
+    <style type="text/css">
+        body,
+        html,
+        #container {
+            width: 100%;
+            height: 100%;
+            /* overflow: hidden;
+            margin: 0;
+            font-family: "微软雅黑"; */
+            /* left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            position: 'absolute';
+            z-index: 1; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+</body>
+
+</html>
+<script type="text/javascript">
+    var mp = new BMap.Map("container");
+    // mp.centerAndZoom(new BMap.Point(116.3964, 39.9093), 10);
+    mp.centerAndZoom(new BMap.Point(118.778611, 32.043889), 15);
+    mp.enableScrollWheelZoom();
+</script>

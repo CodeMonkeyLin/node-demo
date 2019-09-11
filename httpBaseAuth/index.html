@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script>
+
+        $(function () {
+            var remove_popoverbox_Timer;
+            $(document).on("mouseover mouseout", "a[name='user']", function (event) {
+                var remove_popoverbox_fun = function () {
+                    $('.popover_member_outer').remove();
+                    //popover_box是构建的层，移除链接后，直接移掉该层
+                };
+                if (event.type == "mouseover") {
+
+                    //todo ajax获取用户信息
+                    var data = '' +
+                        '<div class="popover_member_outer" style="padding:10px;border:1px solid red;width: 150px;height:150px;">' +
+                        '   <div class="popover_member" style="padding:10px;border:1px solid red;width: 100px;height:100px;">' +
+                        '       <div class="member_face">xxx</div>' +
+                        '       <div class="member_name">xxxx</div>' +
+                        '   </div>' +
+                        '</div>';
+
+                    var $iDiv = $(data);
+                    //todo ....
+                    //todo 构建popover_box，用定位显示在当前的链接附近
+                    //$(this).append($iDiv);
+                    var offsetPosition = $(this).offset();
+                    $('body').append($iDiv);
+                    $iDiv.css({
+                        position: 'absolute',
+                        left: offsetPosition.left + 30 + 'px',
+                        top: offsetPosition.top + 'px'
+                    });
+                    $('.popover_member_outer').on("mouseenter", function () {
+                        clearTimeout(remove_popoverbox_Timer);
+                    });
+                    // $('.popover_member_outer').on("mouseleave", function () {
+                    //     remove_popoverbox_fun();
+                    // });
+                }
+                else if (event.type == "mouseout") {
+                    clearTimeout(remove_popoverbox_Timer);
+                    remove_popoverbox_Timer = setTimeout(function () {
+                        remove_popoverbox_fun();
+                    }, 100);
+                }
+
+
+            })
+        });
+
+    </script>
+</head>
+
+<body>
+
+    <a name="user" data-uid="10003">张三</a>
+
+</body>
+
+</html>
