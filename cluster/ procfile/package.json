@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "pandora": "^2.1.1"
+  },
+  "scripts": {
+    "dev": "pandora dev",
+    "start": "pandora start",
+    "stop": "pandora stop"
+  }
+
+}
